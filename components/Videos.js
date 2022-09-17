@@ -1,25 +1,25 @@
-import {View, StyleSheet, Text, Dimensions} from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Text,
+  Dimensions,
+  ActivityIndicator,
+} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Video from 'react-native-video';
 
 const Videos = ({url}) => {
-  const [isVideoBuffer, setIsVideoBuffer] = useState(false);
+  const [isBuffer, setIsBuffer] = useState(false);
   const [onError, setOnError] = useState();
   const [isPaused, setIsPaused] = useState(false);
 
-  if (isVideoBuffer) {
+  if (isBuffer) {
     return (
       <View style={styles.backgroundVideo}>
-        <Text style={{textAlign: 'center'}}>Loading........</Text>
+        <ActivityIndicator size="large" color="red" />
       </View>
     );
   }
-
-  useEffect(() => {
-    setTimeout(() => {
-      setIsPaused(false);
-    }, 3000);
-  }, []);
 
   return (
     <View style={{flex: 1}}>
@@ -28,7 +28,11 @@ const Videos = ({url}) => {
         style={styles.backgroundVideo}
         // paused={true}
         resizeMode="cover"
-        onBuffer={isBuffer => setIsVideoBuffer(isBuffer)}
+        // controls
+        // pictureInPicture={true}
+        poster="https://baconmockup.com/300/200/"
+        posterResizeMode="cover"
+        onBuffer={isBuffer => setIsBuffer(isBuffer)}
         onError={onError => setOnError(onError)}
       />
     </View>
@@ -44,5 +48,7 @@ const styles = StyleSheet.create({
     height: height / 2,
     width: width,
     justifyContent: 'center',
+    borderBottomLeftRadius: 25,
+    borderBottomRightRadius: 25,
   },
 });

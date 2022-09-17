@@ -1,4 +1,4 @@
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, StatusBar} from 'react-native';
 import React from 'react';
 import {data} from './data/dummy-data';
 import Videos from './components/Videos';
@@ -7,32 +7,27 @@ import {SwiperFlatList} from 'react-native-swiper-flatlist';
 
 const App = () => {
   return (
-    <View style={styles.screen}>
-      {/* <FlatList
-        data={data}
-        keyExtractor={item => item.id}
-        renderItem={({item}) =>
-          item.src.video ? (
-            <Videos url={item.src.video} />
-          ) : (
-            <Images url={item.src.img} />
-          )
-        }
-      /> */}
-      <SwiperFlatList
-        autoplay
-        autoplayDelay={5}
-        autoplayLoop
-        index={data?.length - 1}>
-        {data.map(item =>
-          item.src.video ? (
-            <Videos key={item.id} url={item.src.video} />
-          ) : (
-            <Images key={item.id} url={item.src.img} />
-          ),
-        )}
-      </SwiperFlatList>
-    </View>
+    <>
+      <StatusBar backgroundColor="red" />
+      <View style={styles.screen}>
+        <SwiperFlatList
+          autoplay
+          autoplayDelay={5}
+          autoplayLoop
+          index={data?.length - 1}
+          showPagination
+          paginationDefaultColor="red"
+          autoplayLoopKeepAnimation={true}>
+          {data.map(item =>
+            item.src.video ? (
+              <Videos key={item.id} url={item.src.video} />
+            ) : (
+              <Images key={item.id} url={item.src.img} />
+            ),
+          )}
+        </SwiperFlatList>
+      </View>
+    </>
   );
 };
 
