@@ -19,9 +19,7 @@ const Videos = ({url}) => {
   return (
     <View>
       <Video
-        source={{
-          uri: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
-        }}
+        source={url}
         style={styles.backgroundVideo}
         controls={true}
         resizeMode="contain"
