@@ -5630,6 +5630,11 @@
   "resolved" "https://registry.npmjs.org/react-native-gradle-plugin/-/react-native-gradle-plugin-0.70.3.tgz"
   "version" "0.70.3"
 
+"react-native-swiper-flatlist@^3.0.17":
+  "integrity" "sha512-4sWHzMHhXohiePBtJcVwt/fYVLpKFab7H1bvUH8TI3iMFYTOlMaW2PerlTDqGSO1eLRc4BX1z3X6e1NYPoakMA=="
+  "resolved" "https://registry.npmjs.org/react-native-swiper-flatlist/-/react-native-swiper-flatlist-3.0.17.tgz"
+  "version" "3.0.17"
+
 "react-native-video@^5.2.1":
   "integrity" "sha512-aJlr9MeTuQ0LpZ4n+EC9RvhoKeiPbLtI2Rxy8u7zo/wzGevbRpWHSBj9xZ5YDBXnAVXzuqyNIkGhdw7bfdIBZw=="
   "resolved" "https://registry.npmjs.org/react-native-video/-/react-native-video-5.2.1.tgz"

@@ -1,9 +1,9 @@
-import {Image, View, StyleSheet} from 'react-native';
+import {Image, View, StyleSheet, Dimensions} from 'react-native';
 import React from 'react';
 
 const Images = ({url}) => {
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Image style={styles.image} source={url} resizeMode="cover" />
     </View>
   );
@@ -11,10 +11,12 @@ const Images = ({url}) => {
 
 export default Images;
 
+const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
   image: {
-    height: 200,
-    width: '100%',
     backgroundColor: 'black',
+    height: height / 2,
+    width,
+    justifyContent: 'center',
   },
 });

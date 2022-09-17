@@ -1,10 +1,11 @@
-import {View, StyleSheet, Text} from 'react-native';
-import React, {useRef, useState} from 'react';
+import {View, StyleSheet, Text, Dimensions} from 'react-native';
+import React, {useEffect, useState} from 'react';
 import Video from 'react-native-video';
 
 const Videos = ({url}) => {
   const [isVideoBuffer, setIsVideoBuffer] = useState(false);
   const [onError, setOnError] = useState();
+  const [isPaused, setIsPaused] = useState(false);
 
   if (isVideoBuffer) {
     return (
@@ -14,15 +15,19 @@ const Videos = ({url}) => {
     );
   }
 
-  console.log(isVideoBuffer);
+  useEffect(() => {
+    setTimeout(() => {
+      setIsPaused(false);
+    }, 3000);
+  }, []);
 
   return (
-    <View>
+    <View style={{flex: 1}}>
       <Video
         source={url}
         style={styles.backgroundVideo}
-        controls={true}
-        resizeMode="contain"
+        // paused={true}
+        resizeMode="cover"
         onBuffer={isBuffer => setIsVideoBuffer(isBuffer)}
         onError={onError => setOnError(onError)}
       />
@@ -32,10 +37,12 @@ const Videos = ({url}) => {
 
 export default Videos;
 
+const {width, height} = Dimensions.get('window');
 const styles = StyleSheet.create({
   backgroundVideo: {
-    height: 200,
-    width: '100%',
     backgroundColor: 'black',
+    height: height / 2,
+    width: width,
+    justifyContent: 'center',
   },
 });
