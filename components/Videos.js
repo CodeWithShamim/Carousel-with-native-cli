@@ -1,19 +1,13 @@
-import {
-  View,
-  StyleSheet,
-  Text,
-  Dimensions,
-  ActivityIndicator,
-} from 'react-native';
+import {View, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import Video from 'react-native-video';
 
 const Videos = ({url}) => {
-  const [isBuffer, setIsBuffer] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [onError, setOnError] = useState();
-  const [isPaused, setIsPaused] = useState(false);
+  const [isPaused, setIsPaused] = useState(true);
 
-  if (isBuffer) {
+  if (isLoading) {
     return (
       <View style={styles.backgroundVideo}>
         <ActivityIndicator size="large" color="red" />
@@ -26,13 +20,11 @@ const Videos = ({url}) => {
       <Video
         source={url}
         style={styles.backgroundVideo}
-        // paused={true}
         resizeMode="cover"
-        // controls
-        // pictureInPicture={true}
-        poster="https://baconmockup.com/300/200/"
-        posterResizeMode="cover"
-        onBuffer={isBuffer => setIsBuffer(isBuffer)}
+        muted
+        controls
+        paused={isPaused ? true : false}
+        onProgress={() => setIsPaused(false)}
         onError={onError => setOnError(onError)}
       />
     </View>

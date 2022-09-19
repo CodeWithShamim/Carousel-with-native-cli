@@ -16,8 +16,7 @@ const App = () => {
           autoplayLoop
           index={data?.length - 1}
           showPagination
-          paginationDefaultColor="red"
-          autoplayLoopKeepAnimation={true}>
+          paginationDefaultColor="red">
           {data.map(item =>
             item.src.video ? (
               <Videos key={item.id} url={item.src.video} />
